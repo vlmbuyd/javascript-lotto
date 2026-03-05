@@ -9,4 +9,10 @@ export default class Lotto {
     return this.#numbers.filter((number) => targetNumbers.includes(number))
       .length;
   }
+
+  hasBonusNumber(bonusNumbers) {
+    return bonusNumbers.some((bonusNumber) =>
+      this.#numbers.includes(bonusNumber)
+    );
+  }
 }
