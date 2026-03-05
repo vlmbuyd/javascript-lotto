@@ -1,10 +1,9 @@
 export default class Profit {
   static sumPrize(stats) {
-    let totalPrize = 0;
-
-    Object.values(stats).forEach(({ count, prize }) => {
-      totalPrize += count * prize;
-    });
+    const totalPrize = Object.values(stats).reduce(
+      (sum, { count, prize }) => sum + count * prize,
+      0
+    );
 
     return totalPrize;
   }
