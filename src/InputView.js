@@ -33,14 +33,20 @@ export default class InputView {
   }
 
   static async readPurchaseAmount() {
-    return InputView.readValidInput(INPUT_MESSAGES.PURCHASE_AMOUNT);
+    return await InputView.readValidInput(INPUT_MESSAGES.PURCHASE_AMOUNT);
   }
 
-  static readWinningNumbers() {
-    return InputView.readValidInput("\n" + INPUT_MESSAGES.WINNING_NUMBERS);
+  static async readWinningNumbers() {
+    const winningNumbers = await InputView.readValidInput(
+      "\n" + INPUT_MESSAGES.WINNING_NUMBERS
+    );
+    return winningNumbers.split(",").map((num) => Number(num));
   }
 
-  static readBonusNumbers() {
-    return InputView.readValidInput(INPUT_MESSAGES.BONNUS_NUMBERS);
+  static async readBonusNumbers() {
+    const bonnusNumbers = await InputView.readValidInput(
+      INPUT_MESSAGES.BONNUS_NUMBERS
+    );
+    return [Number(bonnusNumbers)];
   }
 }
