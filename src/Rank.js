@@ -14,6 +14,10 @@ export default class Rank {
     };
   }
 
+  getStats() {
+    return this.stats;
+  }
+
   // 결과 계산
   calculateStats() {
     this.lottos.forEach((lotto) => {
@@ -39,7 +43,7 @@ export default class Rank {
   printStats() {
     this.calculateStats();
 
-    console.log(OUTPUT_MESSAGES.STATS_HEADER);
+    console.log("\n" + OUTPUT_MESSAGES.STATS_HEADER);
 
     Object.entries(this.stats).map(([key, { count, prize }]) => {
       const displayKey =
@@ -47,7 +51,7 @@ export default class Rank {
           ? OUTPUT_MESSAGES["5_BONUS_MATCH"]
           : `${key}개 일치`;
 
-      console.log(`${displayKey} (${prize.toLocaleString()}원) - ${count}개\n`);
+      console.log(`${displayKey} (${prize.toLocaleString()}원) - ${count}개`);
     });
   }
 }

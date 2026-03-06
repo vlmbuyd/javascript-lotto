@@ -5,6 +5,10 @@ export default class Lotto {
     this.#numbers = lottoNumbers;
   }
 
+  getNumbers() {
+    return [...this.#numbers];
+  }
+
   calculateMatchCount(targetNumbers) {
     return this.#numbers.filter((number) => targetNumbers.includes(number))
       .length;
