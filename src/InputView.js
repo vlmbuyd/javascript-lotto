@@ -49,4 +49,13 @@ export default class InputView {
     );
     return [Number(bonnusNumbers)];
   }
+
+  static async askRestart() {
+    const answer = await InputView.read("\n다시 시작하시겠습니까? (y/n) ");
+    const processed = answer.toLowerCase().trim();
+
+    if (processed === "y" || processed === "n") {
+      return processed;
+    }
+  }
 }

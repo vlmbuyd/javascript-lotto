@@ -25,6 +25,18 @@ class App {
     rank.printStats();
 
     Profit.printProfitRate(purchasedAmount, rank.getStats());
+
+    this.checkRestart();
+  }
+
+  async checkRestart() {
+    const command = await InputView.askRestart();
+
+    if (command === "y") {
+      return this.run();
+    }
+
+    return InputView.close();
   }
 }
 
