@@ -10,6 +10,8 @@ export const OUTPUT_MESSAGES = Object.freeze({
 });
 
 export const LOTTO_RULE = Object.freeze({
+  LOTTO_PRICE: 1000,
+
   "3_MATCH": 3,
   "4_MATCH": 4,
   "5_MATCH": 5,
