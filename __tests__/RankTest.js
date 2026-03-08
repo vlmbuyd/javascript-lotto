@@ -1,8 +1,7 @@
 import Lotto from "../src/Lotto.js";
 import Rank from "../src/Rank.js";
 import { getLogSpy } from "../src/utils/testUtils.js";
-
-// TODO: 각 등수별로 테스트 케이스 추가 필요
+import OutputView from "../src/view/OutputView.js";
 
 describe("당첨 통계 출력 test", () => {
   let logSpy;
@@ -88,7 +87,8 @@ describe("당첨 통계 출력 test", () => {
       ],
     ],
   ])("일치 내역: %s", (_, winningNumbers, bonusNumber, logs) => {
-    new Rank(lottos, winningNumbers, bonusNumber).printStats();
+    const rank = new Rank(lottos, winningNumbers, bonusNumber);
+    OutputView.printStats(rank.calculateStats());
 
     logs.forEach((log) =>
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(log))

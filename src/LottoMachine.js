@@ -31,17 +31,4 @@ export default class LottoMachine {
 
     return this.lottos;
   }
-
-  printIssuedLottos() {
-    this.lottos.forEach((lotto) => {
-      console.log(lotto.getNumbers());
-    });
-  }
-
-  run() {
-    this.issuedLottos();
-    this.printIssuedLottos();
-
-    return this.lottos;
-  }
 }

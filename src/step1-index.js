@@ -7,23 +7,26 @@ import InputView from "./InputView.js";
 import LottoMachine from "./LottoMachine.js";
 import Profit from "./Profit.js";
 import Rank from "./Rank.js";
+import OutputView from "./view/OutputView.js";
 
 class App {
   async run() {
     const purchasedAmount = await InputView.readPurchaseAmount();
 
     const lottoMachine = new LottoMachine(purchasedAmount);
-    console.log(`${lottoMachine.lottoCount}개를 구매했습니다.`);
+    OutputView.printLottoCount(lottoMachine.lottoCount);
 
-    const lottos = lottoMachine.run();
+    const lottos = lottoMachine.issuedLottos();
+    OutputView.printIssuedLottos(lottos);
 
     const winningNumbers = await InputView.readWinningNumbers();
     const bonusNumber = await InputView.readBonusNumber();
 
     const rank = new Rank(lottos, winningNumbers, bonusNumber);
-    rank.printStats();
+    OutputView.printStats(rank.calculateStats());
 
-    Profit.printProfitRate(purchasedAmount, rank.getStats());
+    const profitRate = Profit.calculateProfit(purchasedAmount, rank.getStats());
+    OutputView.printProfitRate(profitRate);
 
     this.checkRestart();
   }
