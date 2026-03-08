@@ -11,12 +11,14 @@ export const OUTPUT_MESSAGES = Object.freeze({
 
 const ERROR_PREFIX = "[ERROR]: ";
 export const ERROR_MESSAGES = Object.freeze({
-  INVALID_INPUT:
-    ERROR_PREFIX + "입력값이 유효하지 않습니다. 다시 입력해 주세요.",
+  INVALID_INPUT: ERROR_PREFIX + "입력값이 유효하지 않습니다",
+  INVALID_LOTTO_NUMBERS_COUNT: ERROR_PREFIX + "입력값이 유효하지 않습니다",
+  DUPLICATE_LOTTO_NUMBERS: ERROR_PREFIX + "중복된 번호가 포함되어 있습니다",
 });
 
 export const LOTTO_RULE = Object.freeze({
   LOTTO_PRICE: 1000,
+  LOTTO_NUMBERS_COUNT: 6,
 
   "3_MATCH": 3,
   "4_MATCH": 4,
