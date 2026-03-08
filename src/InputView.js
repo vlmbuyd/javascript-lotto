@@ -1,5 +1,6 @@
-import { ERROR_MESSAGES, INPUT_MESSAGES } from "./constants.js";
 import readline from "readline";
+import { INPUT_MESSAGES, TERMS } from "./constants.js";
+import { InputValidator } from "./utils/InputValidator.js";
 
 const rl = readline.createInterface({
   input: process.stdin,
@@ -15,16 +16,16 @@ export default class InputView {
     });
   }
 
-  static async readValidInput(query) {
+  static async readValidInput(key, query) {
     try {
       const input = await InputView.read(query);
-
-      // TODO: 입력값 검증 로직 추가
+      InputValidator.runValidate(key, input);
 
       return input;
     } catch (err) {
-      console.log(ERROR_MESSAGES.INVALID_INPUT);
-      return await InputView.readValidInput(query);
+      console.log(err.message);
+
+      return await InputView.readValidInput(key, query);
     }
   }
 
@@ -33,25 +34,30 @@ export default class InputView {
   }
 
   static async readPurchaseAmount() {
-    return await InputView.readValidInput(INPUT_MESSAGES.PURCHASE_AMOUNT);
+    return await InputView.readValidInput(
+      TERMS.PURCHASE_AMOUNT,
+      INPUT_MESSAGES.PURCHASE_AMOUNT
+    );
   }
 
   static async readWinningNumbers() {
     const winningNumbers = await InputView.readValidInput(
-      "\n" + INPUT_MESSAGES.WINNING_NUMBERS
+      TERMS.WINNING_NUMBERS,
+      INPUT_MESSAGES.WINNING_NUMBERS
     );
     return winningNumbers.split(",").map((num) => Number(num));
   }
 
   static async readBonusNumber() {
     const bonnusNumbers = await InputView.readValidInput(
+      TERMS.BONUS_NUMBER,
       INPUT_MESSAGES.BONNUS_NUMBERS
     );
     return [Number(bonnusNumbers)];
   }
 
   static async askRestart() {
-    const answer = await InputView.read("\n다시 시작하시겠습니까? (y/n) ");
+    const answer = await InputView.read(INPUT_MESSAGES.RESTART);
     const processed = answer.toLowerCase().trim();
 
     if (processed === "y" || processed === "n") {
