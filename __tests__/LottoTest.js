@@ -24,10 +24,23 @@ describe("당첨 번호 비교 test", () => {
 });
 
 describe("당첨 번호 및 보너스 번호 비교 test", () => {
-  test("5개 일치, 보너스 볼 일치", () => {
-    expect(
-      new Lotto([1, 2, 3, 4, 5, 6]).calculateMatchCount([1, 2, 3, 4, 5, 11, 6])
-    ).toBe(6);
+  test("5개 일치 및 보너스 볼 일치", () => {
+    const lotto = new Lotto([1, 2, 3, 4, 5, 6]);
+
+    const winningNumbers = [1, 2, 3, 4, 5, 45];
+    const bonusNumber = 6;
+
+    expect(lotto.calculateMatchCount(winningNumbers)).toBe(5);
+    expect(lotto.hasBonusNumber(bonusNumber)).toBe(true);
+  });
+
+  test("5개 일치하지만, 보너스 볼은 불일치", () => {
+    const lotto = new Lotto([1, 2, 3, 4, 5, 6]);
+    const winningNumbers = [1, 2, 3, 4, 5, 45];
+    const bonusNumber = 44;
+
+    expect(lotto.calculateMatchCount(winningNumbers)).toBe(5);
+    expect(lotto.hasBonusNumber(bonusNumber)).toBe(false);
   });
 });
 
