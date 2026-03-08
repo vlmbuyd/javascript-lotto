@@ -9,6 +9,12 @@ export const OUTPUT_MESSAGES = Object.freeze({
   "5_BONUS_MATCH": "5개 일치, 보너스 볼 일치",
 });
 
+const ERROR_PREFIX = "[ERROR]: ";
+export const ERROR_MESSAGES = Object.freeze({
+  INVALID_INPUT:
+    ERROR_PREFIX + "입력값이 유효하지 않습니다. 다시 입력해 주세요.",
+});
+
 export const LOTTO_RULE = Object.freeze({
   LOTTO_PRICE: 1000,
 

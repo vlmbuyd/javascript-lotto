@@ -1,4 +1,4 @@
-import { INPUT_MESSAGES } from "./constants.js";
+import { ERROR_MESSAGES, INPUT_MESSAGES } from "./constants.js";
 import readline from "readline";
 
 const rl = readline.createInterface({
@@ -23,7 +23,7 @@ export default class InputView {
 
       return input;
     } catch (err) {
-      console.log("[ERROR]");
+      console.log(ERROR_MESSAGES.INVALID_INPUT);
       return await InputView.readValidInput(query);
     }
   }
