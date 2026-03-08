@@ -1,5 +1,5 @@
-import calculateProfitRate from "../src/calculateProfit.js";
 import { LOTTO_RULE } from "../src/constants.js";
+import calculateProfitRate from "../src/model/calculateProfit.js";
 import { getLogSpy } from "../src/utils/testUtils.js";
 import OutputView from "../src/view/OutputView.js";
 
