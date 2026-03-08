@@ -7,6 +7,10 @@ export default class LottoMachine {
     this.lottos = [];
   }
 
+  get lottoCount() {
+    return this.lottoCount;
+  }
+
   generateLottoNumbers(min, max, count) {
     const lottoNumbers = new Set();
 
