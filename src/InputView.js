@@ -45,15 +45,16 @@ export default class InputView {
       TERMS.WINNING_NUMBERS,
       INPUT_MESSAGES.WINNING_NUMBERS
     );
-    return winningNumbers.split(",").map((num) => Number(num));
+
+    return winningNumbers.split(",").map(Number);
   }
 
   static async readBonusNumber() {
-    const bonnusNumbers = await InputView.readValidInput(
+    const bonusNumber = await InputView.readValidInput(
       TERMS.BONUS_NUMBER,
       INPUT_MESSAGES.BONNUS_NUMBERS
     );
-    return [Number(bonnusNumbers)];
+    return Number(bonusNumber);
   }
 
   static async askRestart() {

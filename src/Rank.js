@@ -20,17 +20,12 @@ export default class Rank {
 
   calculateStats() {
     this.lottos.forEach((lotto) => {
-      const matchCount = lotto.calculateMatchCount([
-        ...this.winningNumbers,
-        ...this.bonusNumber,
-      ]);
+      const matchCount = lotto.calculateMatchCount(this.winningNumbers);
+      const hasBonus = lotto.hasBonusNumber(this.bonusNumber);
 
       if (matchCount < LOTTO_RULE["3_MATCH"]) return;
 
-      if (
-        matchCount === LOTTO_RULE["5_MATCH"] &&
-        lotto.hasBonusNumber(this.bonusNumber)
-      ) {
+      if (matchCount === LOTTO_RULE["5_MATCH"] && hasBonus) {
         this.stats[LOTTO_RULE["5_BONUS_MATCH"]].count += 1;
       } else if (Object.keys(this.stats).includes(String(matchCount))) {
         this.stats[matchCount].count += 1;
