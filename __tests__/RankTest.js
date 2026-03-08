@@ -88,7 +88,8 @@ describe("당첨 통계 출력 test", () => {
     ],
   ])("일치 내역: %s", (_, winningNumbers, bonusNumber, logs) => {
     const rank = new Rank(lottos, winningNumbers, bonusNumber);
-    OutputView.printStats(rank.calculateStats());
+    rank.calculateStats();
+    OutputView.printStats(rank.getStats());
 
     logs.forEach((log) =>
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(log))

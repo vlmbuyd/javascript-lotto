@@ -29,6 +29,6 @@ export default class LottoMachine {
       this.lottos.push(lotto);
     });
 
-    return this.lottos;
+    return [...this.lottos];
   }
 }

@@ -15,7 +15,7 @@ export default class Rank {
   }
 
   getStats() {
-    return this.stats;
+    return structuredClone(this.stats);
   }
 
   calculateStats() {
@@ -36,7 +36,5 @@ export default class Rank {
         this.stats[matchCount].count += 1;
       }
     });
-
-    return this.stats;
   }
 }

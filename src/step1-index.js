@@ -23,7 +23,8 @@ class App {
     const bonusNumber = await InputView.readBonusNumber();
 
     const rank = new Rank(lottos, winningNumbers, bonusNumber);
-    OutputView.printStats(rank.calculateStats());
+    rank.calculateStats();
+    OutputView.printStats(rank.getStats());
 
     const profitRate = Profit.calculateProfit(purchasedAmount, rank.getStats());
     OutputView.printProfitRate(profitRate);
