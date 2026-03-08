@@ -5,7 +5,7 @@
 
 import InputView from "./InputView.js";
 import LottoMachine from "./LottoMachine.js";
-import Rank from "./Rank.js";
+import WinningStatistics from "./model/WinningStatistics.js";
 import OutputView from "./view/OutputView.js";
 import calculateProfitRate from "./model/calculateProfit.js";
 
@@ -22,11 +22,18 @@ class App {
     const winningNumbers = await InputView.readWinningNumbers();
     const bonusNumber = await InputView.readBonusNumber();
 
-    const rank = new Rank(lottos, winningNumbers, bonusNumber);
-    rank.calculateStats();
-    OutputView.printStats(rank.getStats());
+    const winningStatistics = new WinningStatistics(
+      lottos,
+      winningNumbers,
+      bonusNumber
+    );
+    winningStatistics.calculateStats();
+    OutputView.printStats(winningStatistics.getStats());
 
-    const profitRate = calculateProfitRate(purchasedAmount, rank.getStats());
+    const profitRate = calculateProfitRate(
+      purchasedAmount,
+      winningStatistics.getStats()
+    );
     OutputView.printProfitRate(profitRate);
 
     this.checkRestart();

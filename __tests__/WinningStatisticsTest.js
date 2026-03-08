@@ -1,5 +1,5 @@
 import Lotto from "../src/Lotto.js";
-import Rank from "../src/Rank.js";
+import WinningStatistics from "../src/model/WinningStatistics.js";
 import { getLogSpy } from "../src/utils/testUtils.js";
 import OutputView from "../src/view/OutputView.js";
 
@@ -87,9 +87,13 @@ describe("당첨 통계 출력 test", () => {
       ],
     ],
   ])("일치 내역: %s", (_, winningNumbers, bonusNumber, logs) => {
-    const rank = new Rank(lottos, winningNumbers, bonusNumber);
-    rank.calculateStats();
-    OutputView.printStats(rank.getStats());
+    const winningStatistics = new WinningStatistics(
+      lottos,
+      winningNumbers,
+      bonusNumber
+    );
+    winningStatistics.calculateStats();
+    OutputView.printStats(winningStatistics.getStats());
 
     logs.forEach((log) =>
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(log))
