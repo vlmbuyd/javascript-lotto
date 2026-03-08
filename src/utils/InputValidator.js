@@ -4,6 +4,7 @@ export class InputValidator {
   static #validators = {
     [TERMS.PURCHASE_AMOUNT]: (value) => PurchaseAmountValidator.validate(value),
     [TERMS.WINNING_NUMBERS]: (value) => WinningNumbersValidator.validate(value),
+    [TERMS.BONUS_NUMBER]: (value) => BonusNumberValidator.validate(value),
   };
 
   // 공통 검증 로직
@@ -99,5 +100,21 @@ class WinningNumbersValidator {
   static validate(value) {
     const parsedList = value.split(",").map(Number);
     this.#validators.forEach((validator) => validator.call(this, parsedList));
+  }
+}
+
+/**
+ * 보너스 번호 입력값 검증
+ */
+class BonusNumberValidator {
+  // 숫자가 아닌 경우
+  static #validateType(value) {
+    if (Number.isNaN(Number(value))) {
+      throw new Error(ERROR_MESSAGES.BONUS_NUMBER_TYPE);
+    }
+  }
+
+  static validate(value) {
+    this.#validateType(value);
   }
 }
