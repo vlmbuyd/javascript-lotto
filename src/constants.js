@@ -21,10 +21,17 @@ export const ERROR_MESSAGES = Object.freeze({
   INVALID_PURCHASE_AMOUNT_UNIT:
     ERROR_PREFIX + "구입 금액은 1000원 단위여야 합니다\n",
 
+  WINNING_NUMBER_TYPE: ERROR_PREFIX + "당첨 번호는 숫자여야 합니다\n",
+  WINNING_NUMBER_COUNT: ERROR_PREFIX + "당첨 번호는 6개여야 합니다\n",
+  WINNING_NUMBER_DUPLICATE:
+    ERROR_PREFIX + "당첨 번호에 중복된 번호가 포함되어 있습니다\n",
+  WINNING_NUMBER_RANGE:
+    ERROR_PREFIX + "당첨 번호는 1~45 사이의 숫자여야 합니다\n",
+
   INVALID_LOTTO_NUMBERS_COUNT: ERROR_PREFIX + "로또 번호는 6개여야 합니다\n",
   DUPLICATE_LOTTO_NUMBERS: ERROR_PREFIX + "중복된 번호가 포함되어 있습니다\n",
   OUT_OF_RANGE_LOTTO_NUMBERS:
-    ERROR_PREFIX + "로또 번호는 1~45 범위를 벗어날 수 없습니다\n",
+    ERROR_PREFIX + "로또 번호는 1~45 사이의 숫자여야 합니다\n",
 });
 
 export const LOTTO_RULE = Object.freeze({
