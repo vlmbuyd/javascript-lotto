@@ -1,4 +1,4 @@
-import { ERROR_MESSAGES, LOTTO_RULE } from "./constants.js";
+import { ERROR_MESSAGES, LOTTO_RULE } from "../utils/constants.js";
 
 export default class Lotto {
   #numbers;
