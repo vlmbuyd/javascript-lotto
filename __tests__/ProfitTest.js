@@ -1,12 +1,6 @@
 import { LOTTO_RULE } from "../src/constants.js";
 import Profit from "../src/Profit.js";
-
-// TODO: 공통 유틸로 분리
-const getLogSpy = () => {
-  const logSpy = jest.spyOn(console, "log");
-  logSpy.mockClear();
-  return logSpy;
-};
+import { getLogSpy } from "../src/utils/testUtils.js";
 
 test("수익률 계산 test", () => {
   const logSpy = getLogSpy();

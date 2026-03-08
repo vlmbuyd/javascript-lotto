@@ -1,19 +1,15 @@
 import Lotto from "../src/Lotto.js";
 import Rank from "../src/Rank.js";
-
-const getLogSpy = () => {
-  const logSpy = jest.spyOn(console, "log");
-  logSpy.mockClear();
-  return logSpy;
-};
+import { getLogSpy } from "../src/utils/testUtils.js";
 
 // TODO: 각 등수별로 테스트 케이스 추가 필요
 
 describe("당첨 통계 출력 test", () => {
-  const logSpy = getLogSpy();
+  let logSpy;
   let lottos;
 
   beforeEach(() => {
+    logSpy = getLogSpy();
     lottos = [
       new Lotto([8, 21, 23, 41, 42, 43]),
       new Lotto([3, 5, 11, 16, 32, 38]),
