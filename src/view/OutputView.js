@@ -1,4 +1,4 @@
-import { LOTTO_RULE, OUTPUT_MESSAGES } from "../constants.js";
+import { LOTTO_RULE, OUTPUT_MESSAGES } from "../utils/constants.js";
 
 export default class OutputView {
   static printLottoCount(lottoCount) {

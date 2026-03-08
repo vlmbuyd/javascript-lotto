@@ -1,4 +1,4 @@
-import { ERROR_MESSAGES, LOTTO_RULE, TERMS } from "../constants.js";
+import { ERROR_MESSAGES, LOTTO_RULE, TERMS } from "./constants.js";
 
 export class InputValidator {
   static #validators = {

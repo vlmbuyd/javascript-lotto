@@ -1,6 +1,6 @@
 import readline from "readline";
-import { INPUT_MESSAGES, TERMS } from "./constants.js";
-import { InputValidator } from "./utils/InputValidator.js";
+import { INPUT_MESSAGES, TERMS } from "../utils/constants.js";
+import { InputValidator } from "../utils/InputValidator.js";
 
 const rl = readline.createInterface({
   input: process.stdin,

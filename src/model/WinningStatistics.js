@@ -1,4 +1,4 @@
-import { LOTTO_RULE } from "../constants.js";
+import { LOTTO_RULE } from "../utils/constants.js";
 
 export default class WinningStatistics {
   #lottos;
