@@ -3,12 +3,12 @@ import Lotto from "./Lotto.js";
 
 export default class LottoMachine {
   constructor(purchaseAmount) {
-    this.lottoCount = purchaseAmount / LOTTO_RULE.LOTTO_PRICE;
+    this._lottoCount = purchaseAmount / LOTTO_RULE.LOTTO_PRICE;
     this.lottos = [];
   }
 
   get lottoCount() {
-    return this.lottoCount;
+    return this._lottoCount;
   }
 
   generateLottoNumbers(min, max, count) {
