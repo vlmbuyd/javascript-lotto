@@ -71,3 +71,9 @@ describe("당첨 번호 입력값 검증 test", () => {
     ).toThrow(expectedError);
   });
 });
+
+test("보너스 번호 입력값 검증 test", () => {
+  expect(() => InputValidator.runValidate(TERMS.BONUS_NUMBER, "d")).toThrow(
+    ERROR_MESSAGES.BONUS_NUMBER_TYPE
+  );
+});
