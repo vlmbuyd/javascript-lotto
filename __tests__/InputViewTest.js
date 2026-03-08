@@ -45,3 +45,29 @@ describe("구입 금액 입력값 검증 test", () => {
     ).toThrow(expectedError);
   });
 });
+
+describe("당첨 번호 입력값 검증 test", () => {
+  test.each([
+    ["숫자가 아닌 경우", "1,2,3,4,d,6", ERROR_MESSAGES.WINNING_NUMBER_TYPE],
+    [", 외의 구분자인 경우", "1,2,3,4,5;6", ERROR_MESSAGES.WINNING_NUMBER_TYPE],
+    [
+      "당첨 번호 개수가 6개가 아닌 경우",
+      "1,2,3,4,5",
+      ERROR_MESSAGES.WINNING_NUMBER_COUNT,
+    ],
+    [
+      "중복된 번호가 포함된 경우",
+      "1,2,3,4,5,5",
+      ERROR_MESSAGES.WINNING_NUMBER_DUPLICATE,
+    ],
+    [
+      "1~45 범위를 벗어나는 경우",
+      "1,2,3,4,5,50",
+      ERROR_MESSAGES.WINNING_NUMBER_RANGE,
+    ],
+  ])("%s", (_, input, expectedError) => {
+    expect(() =>
+      InputValidator.runValidate(TERMS.WINNING_NUMBERS, input)
+    ).toThrow(expectedError);
+  });
+});
