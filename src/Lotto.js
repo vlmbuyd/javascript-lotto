@@ -37,9 +37,7 @@ export default class Lotto {
       .length;
   }
 
-  hasBonusNumber(bonusNumbers) {
-    return bonusNumbers.some((bonusNumber) =>
-      this.#numbers.includes(bonusNumber)
-    );
+  hasBonusNumber(bonusNumber) {
+    return this.#numbers.includes(bonusNumber);
   }
 }

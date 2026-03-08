@@ -1,10 +1,10 @@
 import { LOTTO_RULE, OUTPUT_MESSAGES } from "./constants.js";
 
 export default class Rank {
-  constructor(lottos, winningNumbers, bonusNumbers) {
+  constructor(lottos, winningNumbers, bonusNumber) {
     this.lottos = lottos;
     this.winningNumbers = winningNumbers;
-    this.bonusNumbers = bonusNumbers;
+    this.bonusNumber = bonusNumber;
     this.stats = {
       [LOTTO_RULE["3_MATCH"]]: { count: 0, prize: 5000 },
       [LOTTO_RULE["4_MATCH"]]: { count: 0, prize: 50000 },
@@ -23,14 +23,14 @@ export default class Rank {
     this.lottos.forEach((lotto) => {
       const matchCount = lotto.calculateMatchCount([
         ...this.winningNumbers,
-        ...this.bonusNumbers,
+        ...this.bonusNumber,
       ]);
 
       if (matchCount < LOTTO_RULE["3_MATCH"]) return;
 
       if (
         matchCount === LOTTO_RULE["5_MATCH"] &&
-        lotto.hasBonusNumber(this.bonusNumbers)
+        lotto.hasBonusNumber(this.bonusNumber)
       ) {
         this.stats[LOTTO_RULE["5_BONUS_MATCH"]].count += 1;
       } else if (Object.keys(this.stats).includes(String(matchCount))) {

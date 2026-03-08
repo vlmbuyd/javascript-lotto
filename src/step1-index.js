@@ -18,9 +18,9 @@ class App {
     const lottos = lottoMachine.run();
 
     const winningNumbers = await InputView.readWinningNumbers();
-    const bonusNumbers = await InputView.readBonusNumbers();
+    const bonusNumber = await InputView.readBonusNumber();
 
-    const rank = new Rank(lottos, winningNumbers, bonusNumbers);
+    const rank = new Rank(lottos, winningNumbers, bonusNumber);
     rank.printStats();
 
     Profit.printProfitRate(purchasedAmount, rank.getStats());

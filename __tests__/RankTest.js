@@ -83,8 +83,8 @@ describe("당첨 통계 출력 test", () => {
         "6개 일치 (2,000,000,000원) - 1개",
       ],
     ],
-  ])("일치 내역: %s", (_, winningNumbers, bonusNumbers, logs) => {
-    new Rank(lottos, winningNumbers, bonusNumbers).printStats();
+  ])("일치 내역: %s", (_, winningNumbers, bonusNumber, logs) => {
+    new Rank(lottos, winningNumbers, bonusNumber).printStats();
 
     logs.forEach((log) =>
       expect(logSpy).toHaveBeenCalledWith(expect.stringContaining(log))

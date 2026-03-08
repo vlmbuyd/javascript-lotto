@@ -43,7 +43,7 @@ export default class InputView {
     return winningNumbers.split(",").map((num) => Number(num));
   }
 
-  static async readBonusNumbers() {
+  static async readBonusNumber() {
     const bonnusNumbers = await InputView.readValidInput(
       INPUT_MESSAGES.BONNUS_NUMBERS
     );
