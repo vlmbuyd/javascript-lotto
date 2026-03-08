@@ -1,5 +1,5 @@
+import calculateProfitRate from "../src/calculateProfit.js";
 import { LOTTO_RULE } from "../src/constants.js";
-import Profit from "../src/Profit.js";
 import { getLogSpy } from "../src/utils/testUtils.js";
 import OutputView from "../src/view/OutputView.js";
 
@@ -15,7 +15,7 @@ test("수익률 계산 test", () => {
     [LOTTO_RULE["6_MATCH"]]: { count: 0, prize: 2000000000 },
   };
 
-  const profitRate = Profit.calculateProfit(purchasedAmount, stats);
+  const profitRate = calculateProfitRate(purchasedAmount, stats);
   OutputView.printProfitRate(profitRate);
 
   expect(logSpy).toHaveBeenCalledWith(

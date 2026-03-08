@@ -5,9 +5,9 @@
 
 import InputView from "./InputView.js";
 import LottoMachine from "./LottoMachine.js";
-import Profit from "./Profit.js";
 import Rank from "./Rank.js";
 import OutputView from "./view/OutputView.js";
+import calculateProfitRate from "./model/calculateProfit.js";
 
 class App {
   async run() {
@@ -26,7 +26,7 @@ class App {
     rank.calculateStats();
     OutputView.printStats(rank.getStats());
 
-    const profitRate = Profit.calculateProfit(purchasedAmount, rank.getStats());
+    const profitRate = calculateProfitRate(purchasedAmount, rank.getStats());
     OutputView.printProfitRate(profitRate);
 
     this.checkRestart();
