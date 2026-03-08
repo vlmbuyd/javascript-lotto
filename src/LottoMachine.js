@@ -2,13 +2,19 @@ import { LOTTO_RULE } from "./constants.js";
 import Lotto from "./Lotto.js";
 
 export default class LottoMachine {
+  #lottos;
+
   constructor(purchaseAmount) {
     this._lottoCount = purchaseAmount / LOTTO_RULE.LOTTO_PRICE;
-    this.lottos = [];
+    this.#lottos = [];
   }
 
   get lottoCount() {
     return this._lottoCount;
+  }
+
+  get lottos() {
+    return [...this.#lottos];
   }
 
   generateLottoNumbers(min, max, count) {
@@ -26,7 +32,7 @@ export default class LottoMachine {
     Array.from({ length: this.lottoCount }).forEach(() => {
       const lottoNumbers = this.generateLottoNumbers(1, 45, 6);
       const lotto = new Lotto(lottoNumbers);
-      this.lottos.push(lotto);
+      this.#lottos.push(lotto);
     });
 
     return [...this.lottos];
