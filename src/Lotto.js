@@ -16,6 +16,16 @@ export default class Lotto {
     // 중복된 번호가 포함된 경우
     if (new Set(lottoNumbers).size !== lottoNumbers.length)
       throw new Error(ERROR_MESSAGES.DUPLICATE_LOTTO_NUMBERS);
+
+    // 로또 번호가 1~45 범위를 벗어나는 경우
+    if (
+      lottoNumbers.some(
+        (number) =>
+          number < LOTTO_RULE.MIN_LOTTO_NUMBER ||
+          number > LOTTO_RULE.MAX_LOTTO_NUMBER
+      )
+    )
+      throw new Error(ERROR_MESSAGES.OUT_OF_RANGE_LOTTO_NUMBERS);
   }
 
   getNumbers() {

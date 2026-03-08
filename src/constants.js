@@ -14,11 +14,15 @@ export const ERROR_MESSAGES = Object.freeze({
   INVALID_INPUT: ERROR_PREFIX + "입력값이 유효하지 않습니다",
   INVALID_LOTTO_NUMBERS_COUNT: ERROR_PREFIX + "입력값이 유효하지 않습니다",
   DUPLICATE_LOTTO_NUMBERS: ERROR_PREFIX + "중복된 번호가 포함되어 있습니다",
+  OUT_OF_RANGE_LOTTO_NUMBERS:
+    ERROR_PREFIX + "로또 번호는 1~45 범위를 벗어날 수 없습니다",
 });
 
 export const LOTTO_RULE = Object.freeze({
   LOTTO_PRICE: 1000,
   LOTTO_NUMBERS_COUNT: 6,
+  MIN_LOTTO_NUMBER: 1,
+  MAX_LOTTO_NUMBER: 45,
 
   "3_MATCH": 3,
   "4_MATCH": 4,
