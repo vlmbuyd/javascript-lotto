@@ -4,10 +4,11 @@
  */
 
 import InputView from "./view/InputView.js";
-import LottoMachine from "./LottoMachine.js";
 import WinningStatistics from "./model/WinningStatistics.js";
 import OutputView from "./view/OutputView.js";
 import calculateProfitRate from "./model/calculateProfit.js";
+import LottoMachine from "./model/LottoMachine.js";
+import { LOTTO_RULE } from "./utils/constants.js";
 
 class App {
   async run() {
@@ -42,7 +43,7 @@ class App {
   async checkRestart() {
     const command = await InputView.askRestart();
 
-    if (command === "y") {
+    if (command === LOTTO_RULE.RESTART) {
       return this.run();
     }
 

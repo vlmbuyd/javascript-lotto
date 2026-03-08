@@ -1,5 +1,5 @@
 import readline from "readline";
-import { INPUT_MESSAGES, TERMS } from "../utils/constants.js";
+import { INPUT_MESSAGES, LOTTO_RULE, TERMS } from "../utils/constants.js";
 import { InputValidator } from "../utils/InputValidator.js";
 
 const rl = readline.createInterface({
@@ -61,7 +61,7 @@ export default class InputView {
     const answer = await InputView.read(INPUT_MESSAGES.RESTART);
     const processed = answer.toLowerCase().trim();
 
-    if (processed === "y" || processed === "n") {
+    if (processed === LOTTO_RULE.RESTART || processed === LOTTO_RULE.QUIT) {
       return processed;
     }
   }
