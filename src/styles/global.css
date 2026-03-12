@@ -65,3 +65,30 @@ select {
   font-size: var(--font-size-caption);
   font-weight: var(--font-weight-bold);
 }
+
+/* button 공통 컴포넌트 */
+.button {
+  width: 100%;
+  height: 36px;
+  border-radius: 4px;
+  color: var(--grey-1);
+  background-color: var(--primary);
+  cursor: pointer;
+}
+
+/* input 공통 컴포넌트 */
+.input {
+  width: 100%;
+  height: 36px;
+  padding: 8px 8px 4px 8px;
+  border: 1px solid var(--grey-3);
+  border-radius: 4px;
+  color: var(--grey-5);
+  background-color: var(--grey-1);
+
+  &::placeholder {
+    font-size: var(--font-size-placeholder);
+    font-weight: var(--font-weight-regular);
+    color: var(--grey-4);
+  }
+}
