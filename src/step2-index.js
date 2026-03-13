@@ -61,3 +61,29 @@ function renderWinningBonusForm() {
   const winningInputEl = document.querySelector("#winning-number");
   winningInputEl.focus();
 }
+
+const winningBonusBtnEl = document.querySelector(".winning-bonus__button");
+winningBonusBtnEl.addEventListener("click", () => {
+  renderWinningResultModal();
+});
+
+const body = document.querySelector("body");
+const modalEl = document.querySelector(".modal-root");
+const closeBtnEl = document.querySelector(".modal__icon-wrapper");
+const restartBtnEl = document.querySelector(".restart-button");
+
+// 당첨 결과 모달 렌더링
+function renderWinningResultModal() {
+  modalEl.showModal();
+  body.classList.add("modal-open"); // 스크롤 제한
+}
+
+// 모달 닫기
+closeBtnEl.addEventListener("click", () => {
+  modalEl.close();
+});
+
+// 다시 시작하기
+restartBtnEl.addEventListener("click", () => {
+  modalEl.close();
+});

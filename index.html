@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./src/styles/reset.css" />
     <link rel="stylesheet" href="./src/styles/global.css" />
     <link rel="stylesheet" href="./src/styles/styles.css" />
+    <link rel="stylesheet" href="./src/styles/modal.css" />
     <title>Document</title>
   </head>
 
@@ -74,7 +75,10 @@
               </div>
             </div>
 
-            <button class="button text-caption" type="button">
+            <button
+              class="button text-caption winning-bonus__button"
+              type="button"
+            >
               결과 확인하기
             </button>
           </form>
@@ -83,6 +87,62 @@
 
       <footer class="text-caption">Copyright 2023. woowacourse</footer>
     </div>
+
+    <!-- 당첨 통계 모달 -->
+    <dialog class="modal-root">
+      <header class="modal-header">
+        <button class="modal__icon-wrapper">
+          <img src="./src/assets/close.svg" alt="close-icon" />
+        </button>
+      </header>
+
+      <div class="modal-content__wrapper">
+        <h2 class="winning-stats__title text-subtitle">🏆 당첨 통계 🏆</h2>
+
+        <table class="modal-table__wrapper">
+          <thead>
+            <tr class="modal-table__row">
+              <th>일치 개수</th>
+              <th>당첨금</th>
+              <th>당첨 개수</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="modal-table__row">
+              <td class="modal-table__data">3개</td>
+              <td class="modal-table__data">5,000</td>
+              <td class="modal-table__data">n개</td>
+            </tr>
+            <tr class="modal-table__row">
+              <td class="modal-table__data">3개</td>
+              <td class="modal-table__data">5,000</td>
+              <td class="modal-table__data">n개</td>
+            </tr>
+            <tr class="modal-table__row">
+              <td class="modal-table__data">3개</td>
+              <td class="modal-table__data">5,000</td>
+              <td class="modal-table__data">n개</td>
+            </tr>
+            <tr class="modal-table__row">
+              <td class="modal-table__data">3개</td>
+              <td class="modal-table__data">5,000</td>
+              <td class="modal-table__data">n개</td>
+            </tr>
+            <tr class="modal-table__row">
+              <td class="modal-table__data">3개</td>
+              <td class="modal-table__data">5,000</td>
+              <td class="modal-table__data">n개</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <strong class="profit-rate">당신의 총 수익률은 %입니다.</strong>
+
+        <button class="button restart-button" type="button">
+          다시 시작하기
+        </button>
+      </div>
+    </dialog>
 
     <script type="module" src="./src/step2-index.js"></script>
   </body>
