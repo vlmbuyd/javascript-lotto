@@ -23,8 +23,9 @@
           <!-- 구입 금액 입력 -->
           <form class="purchase__form">
             <div class="purchase__input-wrapper">
-              <label>구입할 금액을 입력해주세요.</label>
+              <label for="puchase">구입할 금액을 입력해주세요.</label>
               <input
+                id="puchase"
                 class="input purchase__input"
                 type="number"
                 placeholder="금액"
@@ -35,6 +36,48 @@
 
           <!-- 발행된 로또 -->
           <div class="issued-lotto__wrapper"></div>
+
+          <!-- 당첨 번호 및 보너스 번호 입력 -->
+          <form class="winning-bonus__form hidden">
+            <p class="winning-bonus__title text-body">
+              지난 주 당첨 번호 6개와 보너스 번호 1개를 입력해주세요.
+            </p>
+
+            <div class="winning-bonus__wrapper">
+              <div class="winning__wrapper">
+                <label class="text-body" for="winning-number">당첨 번호</label>
+
+                <div class="winning-bonus__input-wrapper">
+                  <input
+                    id="winning-number"
+                    class="input winning__input"
+                    type="text"
+                  />
+                  <input class="input winning__input" type="text" />
+                  <input class="input winning__input" type="text" />
+                  <input class="input winning__input" type="text" />
+                  <input class="input winning__input" type="text" />
+                  <input class="input winning__input" type="text" />
+                </div>
+              </div>
+
+              <div class="bonus__wrapper">
+                <label class="text-body" for="bonus-number">보너스 번호</label>
+
+                <div class="bonus__input-wrapper">
+                  <input
+                    id="bonus-number"
+                    class="input bonus__input"
+                    type="text"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <button class="button text-caption" type="button">
+              결과 확인하기
+            </button>
+          </form>
         </section>
       </main>
 

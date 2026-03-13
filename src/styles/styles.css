@@ -31,6 +31,10 @@ footer {
   color: var(--primary);
 }
 
+.winning-bonus__form.hidden {
+  display: none;
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -68,6 +72,8 @@ footer {
   gap: 8px;
   width: 100%;
 
+  margin-bottom: 24px;
+
   .issued-lotto__count {
     color: var(--grey-5);
   }
@@ -76,8 +82,7 @@ footer {
     display: flex;
     flex-direction: column;
     gap: 4px;
-    max-height: 276px;
-    margin-bottom: 24px;
+    height: 276px;
     overflow: auto;
 
     .issued-lotto {
@@ -88,6 +93,63 @@ footer {
 
       .issued-lotto__icon-wrapper {
         font-size: 34px;
+      }
+    }
+  }
+}
+
+.winning-bonus__form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .winning-bonus__title {
+    margin-bottom: 12px;
+    color: var(--grey-5);
+  }
+
+  .winning__input,
+  .bonus__input {
+    padding: 5px;
+    text-align: center;
+  }
+}
+
+.winning-bonus__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 27px;
+
+  label {
+    color: var(--grey-5);
+  }
+
+  .winning__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 244px;
+
+    .winning-bonus__input-wrapper {
+      display: flex;
+      gap: 8px;
+    }
+  }
+
+  .bonus__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .bonus__input-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 8px;
+
+      .bonus__input {
+        width: 34px;
       }
     }
   }
