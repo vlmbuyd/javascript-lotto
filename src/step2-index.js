@@ -17,7 +17,16 @@ purchaseFormEl.addEventListener("submit", (e) => {
   const lottoListWrapperEl = document.querySelector(".issued-lotto__wrapper");
   renderIssuedLottosCount(lottoListWrapperEl, lottos.length);
   renderIssuedLottos(lottoListWrapperEl, lottos);
+  renderWinningBonusForm();
 });
+
+// 발행된 로또 개수 렌더링
+function renderIssuedLottosCount(parentEl, count) {
+  parentEl.insertAdjacentHTML(
+    "afterbegin",
+    `<p class="issued-lotto__count text-body">총 ${count}개를 구매하셨습니다.</p>`
+  );
+}
 
 // 발행된 로또 리스트 렌더링
 function renderIssuedLottos(parentEl, lottos) {
@@ -26,16 +35,6 @@ function renderIssuedLottos(parentEl, lottos) {
   parentEl.appendChild(lottoListEl);
 
   lottoListEl.insertAdjacentHTML("beforeend", createIssuedLottosNode(lottos));
-}
-
-// 발행된 로또 개수 렌더링
-function renderIssuedLottosCount(parentEl, count) {
-  parentEl.insertAdjacentHTML(
-    "afterbegin",
-    `
-        <p class="issued-lotto__count text-body">총 ${count}개를 구매하셨습니다.</p>
-      `
-  );
 }
 
 // 발행된 로또 리스트 노드 생성
@@ -52,4 +51,13 @@ function createIssuedLottosNode(lottos) {
         `
     )
     .join("");
+}
+
+// 당첨 번호 및 보너스 번호 DOM 렌더링
+function renderWinningBonusForm() {
+  const formEl = document.querySelector(".winning-bonus__form");
+  formEl.classList.remove("hidden");
+
+  const winningInputEl = document.querySelector("#winning-number");
+  winningInputEl.focus();
 }
