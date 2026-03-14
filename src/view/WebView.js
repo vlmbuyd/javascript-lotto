@@ -21,7 +21,6 @@ export default class WebView {
     this.closeBtnEl.addEventListener("click", () => {
       this.closeWinningModal();
     });
-
     this.restartBtnEl.addEventListener("click", () => {
       this.closeWinningModal();
     });
@@ -49,6 +48,7 @@ export default class WebView {
     this.renderIssuedLottos(this.lottoListWrapperEl, lottos);
     this.renderWinningBonusForm();
   }
+
   // 발행된 로또 개수 렌더링
   renderIssuedLottosCount(parentEl, count) {
     parentEl.insertAdjacentHTML(
@@ -56,6 +56,7 @@ export default class WebView {
       `<p class="issued-lotto__count text-body">총 ${count}개를 구매하셨습니다.</p>`
     );
   }
+
   // 발행된 로또 리스트 렌더링
   renderIssuedLottos(parentEl, lottos) {
     const lottoListEl = document.createElement("ul");
@@ -67,6 +68,7 @@ export default class WebView {
       this.createIssuedLottosNode(lottos)
     );
   }
+
   // 발행된 로또 리스트 노드 생성
   createIssuedLottosNode(lottos) {
     return lottos
@@ -82,6 +84,7 @@ export default class WebView {
       )
       .join("");
   }
+
   // 당첨 번호 및 보너스 번호 DOM 렌더링
   renderWinningBonusForm() {
     const formEl = document.querySelector(".winning-bonus__form");
@@ -103,31 +106,30 @@ export default class WebView {
 
     this.profitRateEl.textContent = `총 수익률은 ${profitRate}%입니다.`;
   }
-  createWinningResultNode(stats) {
-    let resultHTML = ``;
 
-    [
+  createWinningResultNode(stats) {
+    return [
       LOTTO_RULE["3_MATCH"],
       LOTTO_RULE["4_MATCH"],
       LOTTO_RULE["5_MATCH"],
       LOTTO_RULE["5_BONUS_MATCH"],
       LOTTO_RULE["6_MATCH"],
-    ].forEach((matchCount) => {
-      const count = stats[matchCount].count;
-      const prize = stats[matchCount].prize;
-
-      resultHTML += `
+    ]
+      .map(
+        (matchCount) =>
+          `
             <tr class="modal-table__row">
               <td class="modal-table__data">${
                 Number(matchCount) ? Number(matchCount) + "개" : matchCount
               }</td>
-              <td class="modal-table__data">${prize.toLocaleString()}</td>
-              <td class="modal-table__data">${count}개</td>
+              <td class="modal-table__data">${stats[
+                matchCount
+              ].prize.toLocaleString()}</td>
+              <td class="modal-table__data">${stats[matchCount].count}개</td>
             </tr>
-      `;
-    });
-
-    return resultHTML;
+      `
+      )
+      .join("");
   }
 
   // 당첨 결과 모달 닫기
