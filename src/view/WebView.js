@@ -6,6 +6,7 @@ export default class WebView {
     this.purchaseFormEl = document.querySelector(".purchase__form");
     this.lottoListWrapperEl = document.querySelector(".issued-lotto__wrapper");
 
+    this.winningBonusFormEl = document.querySelector(".winning-bonus__form");
     this.winningInputEls = document.querySelectorAll(".winning__input");
     this.bonusInputEl = document.querySelector(".bonus__input");
     this.winningBonusBtnEl = document.querySelector(".winning-bonus__button");
@@ -17,11 +18,8 @@ export default class WebView {
     this.restartBtnEl = document.querySelector(".restart-button");
   }
 
-  initModalEvents() {
+  initModalEvent() {
     this.closeBtnEl.addEventListener("click", () => {
-      this.closeWinningModal();
-    });
-    this.restartBtnEl.addEventListener("click", () => {
       this.closeWinningModal();
     });
   }
@@ -35,10 +33,20 @@ export default class WebView {
     });
   }
 
-  // 당첨, 보너스 번호 입력 폼 이벤트 바인딩
-  bindWinningBonusFormEvent(handler) {
+  // 당첨 결과 폼 이벤트 바인딩
+  bindWinningResultFormEvent(handler) {
     this.winningBonusBtnEl.addEventListener("click", () => {
       handler(this.winningInputEls, this.bonusInputEl);
+    });
+  }
+
+  // 재시작
+  initRestartEvent(handler) {
+    this.restartBtnEl.addEventListener("click", () => {
+      this.closeWinningModal();
+      this.resetDom();
+
+      handler();
     });
   }
 
@@ -87,8 +95,7 @@ export default class WebView {
 
   // 당첨 번호 및 보너스 번호 DOM 렌더링
   renderWinningBonusForm() {
-    const formEl = document.querySelector(".winning-bonus__form");
-    formEl.classList.remove("hidden");
+    this.winningBonusFormEl.classList.remove("hidden");
 
     const winningInputEl = document.querySelector("#winning-number");
     winningInputEl.focus();
@@ -138,5 +145,18 @@ export default class WebView {
     const modalEl = document.querySelector(".modal-root");
     modalEl.close();
     body.classList.remove("modal-open"); // 스크롤 제한 해제
+  }
+
+  resetDom() {
+    this.purchaseInputEl.value = "";
+    this.winningInputEls.forEach((el) => (el.value = ""));
+    this.bonusInputEl.value = "";
+
+    this.lottoListWrapperEl.innerHTML = "";
+    this.winningResultEl.innerHTML = "";
+    this.profitRateEl.textContent = "";
+
+    this.lottoListWrapperEl.classList.add("hidden");
+    this.winningBonusFormEl.classList.add("hidden");
   }
 }

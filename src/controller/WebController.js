@@ -11,10 +11,13 @@ export default class WebController {
 
   initEventListener() {
     this.webView.bindPurchaseEvent(this.handlePuchase.bind(this));
-    this.webView.bindWinningBonusFormEvent(
-      this.handleWinningBonusForm.bind(this)
+    this.webView.bindWinningResultFormEvent(
+      this.handleWinningResultForm.bind(this)
     );
-    this.webView.initModalEvents();
+    this.webView.initRestartEvent(() => {
+      this.lottoService.reset();
+    });
+    this.webView.initModalEvent();
   }
 
   handlePuchase(purchaseAmount) {
@@ -22,7 +25,7 @@ export default class WebController {
     this.webView.renderPurchaseResult(lottos, lottos.length);
   }
 
-  handleWinningBonusForm(winningInputEls, bonusInputEl) {
+  handleWinningResultForm(winningInputEls, bonusInputEl) {
     const result = this.lottoService.calculateWinningResult(
       Array.from(winningInputEls).map((el) => Number(el.value)),
       Number(bonusInputEl.value)

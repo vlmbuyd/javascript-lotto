@@ -31,4 +31,8 @@ export default class LottoService {
       profitRate: profitRate,
     };
   }
+
+  reset() {
+    this.lottos = [];
+  }
 }
