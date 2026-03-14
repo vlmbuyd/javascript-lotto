@@ -11,11 +11,23 @@ export default class WebController {
 
   initEventListener() {
     this.webView.bindPurchaseEvent(this.handlePuchase.bind(this));
+    this.webView.bindWinningBonusFormEvent(
+      this.handleWinningBonusForm.bind(this)
+    );
     this.webView.initModalEvents();
   }
 
   handlePuchase(purchaseAmount) {
     const lottos = this.lottoService.purchaseLottos(purchaseAmount);
     this.webView.renderPurchaseResult(lottos, lottos.length);
+  }
+
+  handleWinningBonusForm(winningInputEls, bonusInputEl) {
+    const result = this.lottoService.calculateWinningResult(
+      Array.from(winningInputEls).map((el) => Number(el.value)),
+      Number(bonusInputEl.value)
+    );
+
+    this.webView.openWinningModal(result);
   }
 }
