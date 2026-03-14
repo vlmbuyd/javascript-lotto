@@ -28,6 +28,7 @@ export default class WebView {
   bindPurchaseEvent(handler) {
     this.purchaseFormEl.addEventListener("submit", (e) => {
       e.preventDefault();
+      this.lottoListWrapperEl.innerHTML = "";
 
       handler(this.purchaseInputEl.value);
     });
