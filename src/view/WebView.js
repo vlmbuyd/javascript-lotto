@@ -111,7 +111,7 @@ export default class WebView {
     modalEl.showModal();
     body.classList.add("modal-open"); // 스크롤 제한
 
-    let resultHTML = this.createWinningResultNode(stats);
+    const resultHTML = this.createWinningResultNode(stats);
     this.winningResultEl.insertAdjacentHTML("afterbegin", resultHTML);
 
     this.profitRateEl.textContent = `총 수익률은 ${profitRate}%입니다.`;
