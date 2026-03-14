@@ -36,6 +36,8 @@ export default class WebView {
   // 당첨 결과 폼 이벤트 바인딩
   bindWinningResultFormEvent(handler) {
     this.winningBonusBtnEl.addEventListener("click", () => {
+      this.winningResultEl.innerHTML = "";
+
       handler(this.winningInputEls, this.bonusInputEl);
     });
   }
